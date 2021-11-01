@@ -5,7 +5,7 @@
     return_content: true
   register: solr_cores_current
   check_mode: false
-  when: not solr_authentication_enabled
+  when: not solr_authenticate
   
 - name: Check current list of Solr cores (authenticated).
   uri:
@@ -17,7 +17,7 @@
     return_content: true
   register: solr_cores_current
   check_mode: false
-  when: not solr_authentication_enabled
+  when: solr_authenticate
 
 - name: Ensure Solr conf directories exist.
   file:
