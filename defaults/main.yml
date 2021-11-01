@@ -13,6 +13,10 @@ solr_service_manage: true
 solr_service_name: solr
 solr_service_state: started
 
+solr_authenticate: false
+solr_admin: "solr"
+solr_admin_password: "SolrRocks"
+
 solr_install_dir: /opt
 solr_install_path: "/opt/{{ solr_service_name }}"
 solr_home: "/var/{{ solr_service_name }}"
