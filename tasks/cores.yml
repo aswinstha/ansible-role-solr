@@ -5,6 +5,19 @@
     return_content: true
   register: solr_cores_current
   check_mode: false
+  when: not solr_authentication_enabled
+  
+- name: Check current list of Solr cores (authenticated).
+  uri:
+    url: http://{{ solr_connect_host }}:{{ solr_port }}/solr/admin/cores
+    method: GET
+    user: "{{ solr_admin }}"
+    password: "{{ solr_admin_password }}"
+    force_basic_auth: yes
+    return_content: true
+  register: solr_cores_current
+  check_mode: false
+  when: not solr_authentication_enabled
 
 - name: Ensure Solr conf directories exist.
   file:
